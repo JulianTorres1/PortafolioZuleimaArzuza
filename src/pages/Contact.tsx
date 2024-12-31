@@ -1,6 +1,7 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, Instagram } from 'lucide-react';
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { motion } from "motion/react"
 
 export const ContactUs = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -73,6 +74,11 @@ export const ContactUs = () => {
 
 export default function Contact() {
   return (
+    <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
     <div className="container mx-auto px-4 py-8">
       <div className="mx-auto max-w-3xl">
         <h1 className="mb-8 text-center text-4xl font-bold text-gray-900">Contacto</h1>
@@ -91,7 +97,7 @@ export default function Contact() {
           </div>
 
           <div className="rounded-lg bg-white p-6 text-center shadow-md">
-            <MapPin className="mx-auto mb-4 h-8 w-8 text-yellow-600" />
+            <Instagram className="mx-auto mb-4 h-8 w-8 text-yellow-600" />
             <h3 className="mb-2 font-semibold">Instagram</h3>
             <p className="text-gray-600">@_zu_arte_</p>
           </div>
@@ -100,5 +106,6 @@ export default function Contact() {
         <ContactUs />
       </div>
     </div>
+    </motion.div>
   );
 }

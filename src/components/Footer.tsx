@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Mail } from 'lucide-react';
+import { Instagram, Twitter, Mail, Facebook, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -10,6 +10,7 @@ export default function Footer() {
             <h3 className="font-mono font-bold text-lg mb-4">Contacto</h3>
             <p className="font-mono">zulearna22@gmail.com</p>
             <p className="font-mono">+57 (300) 4558349</p>
+            <p className="font-mono">Instagram: @_zu_arte_</p>
           </div>
 
           <div className="text-center">
@@ -35,6 +36,14 @@ export default function Footer() {
               <a href="mailto:zulearna22@gmail.com"
                 className="hover:text-primary-500 transition-colors">
                 <Mail className="h-6 w-6" />
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                className="hover:text-primary-500 transition-colors">
+                <Facebook className="h-6 w-6" />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                className="hover:text-primary-500 transition-colors">
+                <Linkedin className="h-6 w-6" />
               </a>
             </div>
           </div>

@@ -1,6 +1,7 @@
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, User, Mail } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import logonav from '../media/img/logoNavbar.png'
 
@@ -19,15 +20,24 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center space-x-8 font-mono">
-            <Link to="/" className="text-gray-700 hover:text-primary-500 transition-colors">
-              Galeria
-            </Link>
-            <Link to="/about" className="text-gray-700 hover:text-primary-500 transition-colors">
-              Sobre Mi
-            </Link>
-            <Link to="/contact" className="text-gray-700 hover:text-primary-500 transition-colors">
-              Contacto
-            </Link>
+            <motion.div whileHover={{ scale: 1.1 }}>
+              <Link to="/" className="flex items-center text-gray-700 hover:text-primary-500 transition-colors">
+                <Home className="mr-2" />
+                Galeria
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.1 }}>
+              <Link to="/about" className="flex items-center text-gray-700 hover:text-primary-500 transition-colors">
+                <User className="mr-2" />
+                Sobre Mi
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.1 }}>
+              <Link to="/contact" className="flex items-center text-gray-700 hover:text-primary-500 transition-colors">
+                <Mail className="mr-2" />
+                Contacto
+              </Link>
+            </motion.div>
           </div>
 
           <div className="md:hidden flex items-center">

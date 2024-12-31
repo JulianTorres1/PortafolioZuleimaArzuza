@@ -1,7 +1,7 @@
 
 import Hero from '../components/Hero';
 import ArtworkCard from '../components/ArtworkCard';
-
+import { motion } from "motion/react"
 // obras import
 
 import OSADA from '../media/img/Obras/OSADA.jpg'
@@ -142,6 +142,11 @@ const artworks = [
 export default function Gallery() {
   return (
     <>
+      <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      >
       <Hero />
       <div className="container mx-auto px-4 py-16">
         <h1 className="mb-8 text-center text-3xl font-bold text-gray-900 font-mono">Obras</h1>
@@ -205,9 +210,8 @@ export default function Gallery() {
             <ArtworkCard key={artwork.id} artwork={artwork} />
           ))}
         </div>
-        
-        
       </div>
+      </motion.div>
     </>
   );
 }
