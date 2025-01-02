@@ -1,4 +1,4 @@
-import { Menu, X, Home, User, Mail } from 'lucide-react';
+import { Menu, X, Home, User, Mail, Image, BookOpen } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -38,6 +38,18 @@ export default function Navbar() {
                 Contacto
               </Link>
             </motion.div>
+            <motion.div whileHover={{ scale: 1.1 }}>
+              <Link to="/exposiciones" className="flex items-center text-gray-700 hover:text-primary-500 transition-colors">
+                <Image className="mr-2" />
+                Exposiciones
+              </Link>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.1 }}>
+              <Link to="/cultura" className="flex items-center text-gray-700 hover:text-primary-500 transition-colors">
+                <BookOpen className="mr-2" />
+                Cultura
+              </Link>
+            </motion.div>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -59,21 +71,40 @@ export default function Navbar() {
               className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-primary-50"
               onClick={() => setIsOpen(false)}
             >
-              Gallery
+              <Home className="inline-block mr-2" />
+              Galeria
             </Link>
             <Link
               to="/about"
               className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-primary-50"
               onClick={() => setIsOpen(false)}
             >
-              About
+              <User className="inline-block mr-2" />
+              Sobre Mi
             </Link>
             <Link
               to="/contact"
               className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-primary-50"
               onClick={() => setIsOpen(false)}
             >
-              Contact
+              <Mail className="inline-block mr-2" />
+              Contacto
+            </Link>
+            <Link
+              to="/exposiciones"
+              className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-primary-50"
+              onClick={() => setIsOpen(false)}
+            >
+              <Image className="inline-block mr-2" />
+              Exposiciones
+            </Link>
+            <Link
+              to="/cultura"
+              className="block px-3 py-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-primary-50"
+              onClick={() => setIsOpen(false)}
+            >
+              <BookOpen className="inline-block mr-2" />
+              Cultura
             </Link>
           </div>
         </div>

@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import { Artwork } from '../types/artwork';
+import { ScrollText } from 'lucide-react';
 
 interface ArtworkCardProps {
   artwork: Artwork;
 }
 
-const ArtworkCard = ({ artwork }: ArtworkCardProps) => {
+const ArtworkCardExpos = ({ artwork }: ArtworkCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFichaOpen, setIsFichaOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  const toggleFicha = () => setIsFichaOpen(!isFichaOpen);
 
   return (
     <>
@@ -27,18 +30,43 @@ const ArtworkCard = ({ artwork }: ArtworkCardProps) => {
               loading="lazy"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-100 transition-opacity duration-300">
-            <div className="absolute bottom-0 p-6 text-white font-mono">
-              <h3 className="text-xl font-semibold">{artwork.title}</h3>
-              <p className="mt-2 text-sm">{artwork.description}</p>
-              <div className="mt-2 flex items-center space-x-2 text-xs">
-                <span className="rounded-full bg-white/20 px-2 py-1">{artwork.category}</span>
-                <span>{artwork.date}</span>
-              </div>
-            </div>
+          <div className="absolute bottom-4 right-4">
+            <button
+              className="bg-white p-2 rounded-full shadow-lg"
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleFicha();
+              }}
+            >
+              <ScrollText name="file" className="w-6 h-6 text-black" />
+            </button>
           </div>
         </div>
       </LazyLoad>
+
+      {isFichaOpen && (
+        <span className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4 rounded shadow-lg">
+          <div className="relative">
+            <button
+              className="absolute top-6 -right-6 bg-white text-black text-2xl rounded-full p-2 shadow-lg"
+              onClick={toggleFicha}
+            >
+              &times;
+            </button>
+            <div className="p-4">
+              <h2 className='text-white'>{artwork.title}</h2>
+              <p className='text-white'>{artwork.description}</p>
+            {artwork.fichaTecnica && (
+                <img
+                    src={artwork.fichaTecnica}
+                    alt={`Ficha técnica de ${artwork.title}`}
+                    className="mt-4 max-w-full h-auto"
+                />
+            )}
+            </div>
+          </div>
+        </span>
+      )}
 
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
@@ -61,4 +89,4 @@ const ArtworkCard = ({ artwork }: ArtworkCardProps) => {
   );
 };
 
-export default ArtworkCard;
+export default ArtworkCardExpos;

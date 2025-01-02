@@ -5,4 +5,5 @@ export interface Artwork {
   imageUrl: string;
   category: string;
   date: string;
+  fichaTecnica: string | null;
 }
